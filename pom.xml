@@ -10,7 +10,7 @@
     </parent>
     <groupId>io.UoUo</groupId>
     <artifactId>wechat-bot</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
     <name>wechat-bot</name>
     <description>Demo project for Spring Boot</description>
     <properties>
@@ -47,9 +47,9 @@
             <version>${fastjson.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>${fastjson.version}</version>
+            <groupId>com.dtflys.forest</groupId>
+            <artifactId>forest-spring-boot-starter</artifactId>
+            <version>1.5.28</version>
         </dependency>
 
 

@@ -1,6 +1,6 @@
 package io.uouo.wechatbot.service;
 
-import io.uouo.wechatbot.domain.WechatMsg;
+import io.uouo.wechatbot.service.domain.WechatMsg;
 
 /**
  * @author: [青衫] 'QSSSYH@QQ.com'
@@ -77,5 +77,7 @@ public interface WechatBotService {
      * @Date 2021-3-29
      */
     void getPersonalDetail(String wxid);
+
+    void demo();
 
 }

@@ -6,3 +6,10 @@ server:
 # 连接到webSocket 连接地址
 wechatBot:
   url: ws://localhost:5555
+
+forest:
+    max-retry-count: 3     # 最大请求重试次数，默认为 0 次
+    max-retry-interval: 10 # 为最大重试时间间隔, 单位为毫秒，默认为 0 毫秒
+    max-connections: 1000        # ????????
+    connect-timeout: 13000        # ????????????
+    read-timeout: 13000           # ??????????????

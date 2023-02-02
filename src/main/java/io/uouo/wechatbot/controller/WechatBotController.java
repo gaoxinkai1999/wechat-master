@@ -1,7 +1,7 @@
 package io.uouo.wechatbot.controller;
 
 import io.uouo.wechatbot.common.util.AjaxResult;
-import io.uouo.wechatbot.domain.WechatMsg;
+import io.uouo.wechatbot.service.domain.WechatMsg;
 import io.uouo.wechatbot.service.WechatBotService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -106,6 +106,11 @@ public class WechatBotController {
         wechatBotService.getWeChatUserList();
         return AjaxResult.success();
     }
+    @GetMapping("/demo")
+    public AjaxResult demo() {
+        wechatBotService.demo();
+        return AjaxResult.success();
+    }
 
     /**
      * 描述: 获取个人详细信息 3.2.2.121版本dll 未提供该接口
@@ -115,7 +120,7 @@ public class WechatBotController {
      * @Author 青衫 [2940500@qq.com]
      * @Date 2021-3-29
      */
-    // @GetMapping("/getPersonalDetail/{wxid}")
+//     @GetMapping("/getPersonalDetail/{wxid}")
     public AjaxResult getPersonalDetail(@PathVariable("wxid") String wxid) {
         wechatBotService.getPersonalDetail(wxid);
         return AjaxResult.success();

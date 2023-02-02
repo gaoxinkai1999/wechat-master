@@ -2,7 +2,7 @@ package io.uouo.wechatbot.service.impl;
 
 import io.uouo.wechatbot.client.WechatBotClient;
 import io.uouo.wechatbot.common.WechatBotCommon;
-import io.uouo.wechatbot.domain.WechatMsg;
+import io.uouo.wechatbot.service.domain.WechatMsg;
 import io.uouo.wechatbot.service.WechatBotService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -74,6 +74,7 @@ public class WechatBotServiceImpl implements WechatBotService, WechatBotCommon {
     @Override
     public void sendATMsg(WechatMsg wechatMsg) {
         wechatMsg.setType(AT_MSG);
+
         wechatBotClient.sendMsgUtil(wechatMsg);
     }
 
@@ -122,6 +123,15 @@ public class WechatBotServiceImpl implements WechatBotService, WechatBotCommon {
     public void getPersonalDetail(String wxid) {
         WechatMsg wechatMsg = new WechatMsg();
         wechatMsg.setType(PERSONAL_DETAIL);
+        wechatBotClient.sendMsgUtil(wechatMsg);
+    }
+
+    @Override
+    public void demo() {
+        WechatMsg wechatMsg = new WechatMsg();
+        wechatMsg.setRoomid("44037895190@chatroom");
+        wechatMsg.setType(CHATROOM_MEMBER);
+        wechatMsg.setContent(CONTACT_LIST);
         wechatBotClient.sendMsgUtil(wechatMsg);
     }
 }
