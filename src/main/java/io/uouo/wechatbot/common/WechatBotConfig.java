@@ -7,11 +7,7 @@ import org.springframework.context.annotation.Configuration;
 
 import java.net.URISyntaxException;
 
-/**
- * @author: [青衫] 'QSSSYH@QQ.com'
- * @Date: 2021-03-26 8:57
- * @Description: < 描述 >
- */
+
 @Configuration
 public class WechatBotConfig {
 

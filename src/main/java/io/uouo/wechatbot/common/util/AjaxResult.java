@@ -6,7 +6,6 @@ import java.util.HashMap;
 /**
  * 返回对象
  *
- * @author ruoyi    从若依直接拿过来了  来来回回都这样 没必要重新封装个
  */
 public class AjaxResult extends HashMap<String, Object> {
     private static final long serialVersionUID = 1L;

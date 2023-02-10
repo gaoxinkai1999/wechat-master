@@ -1,8 +1,6 @@
 package io.uouo.wechatbot.common;
 
 /**
- * @author: [青衫] 'QSSSYH@QQ.com'
- * @Date: 2021-03-16 18:07
  * @Description: < 一些常量值 >
  */
 public interface WechatBotCommon {

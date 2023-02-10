@@ -1,10 +1,5 @@
 package io.uouo.wechatbot.service.domain;
 
-/**
- * @author: [青衫] 'QSSSYH@QQ.com'
- * @Date: 2021-03-16 18:48
- * @Description: < 描述 >
- */
 public class WechatMsg {
     /** 消息id */
     private String id;

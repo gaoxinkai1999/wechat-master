@@ -1,16 +1,12 @@
 package io.uouo.wechatbot.controller;
 
 import io.uouo.wechatbot.common.util.AjaxResult;
-import io.uouo.wechatbot.service.domain.WechatMsg;
 import io.uouo.wechatbot.service.WechatBotService;
+import io.uouo.wechatbot.service.domain.WechatMsg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-/**
- * @author: [青衫] 'QSSSYH@QQ.com'
- * @Date: 2021-03-16 19:52
- * @Description: < 描述 >
- */
+
 @RestController
 public class WechatBotController {
 
@@ -23,8 +19,6 @@ public class WechatBotController {
      *
      * @param wechatMsg
      * @return io.uouo.wechatbot.common.util.AjaxResult
-     * @Author 青衫 [2940500@qq.com]
-     * @Date 2021-3-26
      */
     @PostMapping("/wechatCommon")
     public AjaxResult wechatCommon(@RequestBody WechatMsg wechatMsg) {
@@ -38,8 +32,6 @@ public class WechatBotController {
      *
      * @param wechatMsg
      * @return io.uouo.wechatbot.common.util.AjaxResult
-     * @Author 青衫 [2940500@qq.com]
-     * @Date 2021-3-26
      */
     @PostMapping("/sendTextMsg")
     public AjaxResult sendTextMsg(@RequestBody WechatMsg wechatMsg) {
@@ -52,8 +44,6 @@ public class WechatBotController {
      *
      * @param wechatMsg
      * @return io.uouo.wechatbot.common.util.AjaxResult
-     * @Author 青衫 [2940500@qq.com]
-     * @Date 2021-3-26
      */
     @PostMapping("/sendImgMsg")
     public AjaxResult sendImgMsg(@RequestBody WechatMsg wechatMsg) {
@@ -67,8 +57,6 @@ public class WechatBotController {
      *
      * @param wechatMsg
      * @return io.uouo.wechatbot.common.util.AjaxResult
-     * @Author 青衫 [2940500@qq.com]
-     * @Date 2021-3-26
      */
     @PostMapping("/sendATMsg")
     public AjaxResult sendATMsg(@RequestBody WechatMsg wechatMsg) {
@@ -81,8 +69,6 @@ public class WechatBotController {
      *
      * @param wechatMsg
      * @return io.uouo.wechatbot.common.util.AjaxResult
-     * @Author 青衫 [2940500@qq.com]
-     * @Date 2021-3-26
      */
     @PostMapping("/sendAnnex")
     public AjaxResult sendAnnex(@RequestBody WechatMsg wechatMsg) {
@@ -98,17 +84,10 @@ public class WechatBotController {
      *
      * @param
      * @return io.uouo.wechatbot.common.util.AjaxResult
-     * @Author 青衫 [2940500@qq.com]
-     * @Date 2021-3-29
      */
     @GetMapping("/getWeChatUserList")
     public AjaxResult getWeChatUserList() {
         wechatBotService.getWeChatUserList();
-        return AjaxResult.success();
-    }
-    @GetMapping("/demo")
-    public AjaxResult demo() {
-        wechatBotService.demo();
         return AjaxResult.success();
     }
 
@@ -117,8 +96,6 @@ public class WechatBotController {
      *
      * @param
      * @return io.uouo.wechatbot.common.util.AjaxResult
-     * @Author 青衫 [2940500@qq.com]
-     * @Date 2021-3-29
      */
 //     @GetMapping("/getPersonalDetail/{wxid}")
     public AjaxResult getPersonalDetail(@PathVariable("wxid") String wxid) {

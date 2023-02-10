@@ -2,16 +2,12 @@ package io.uouo.wechatbot.service.impl;
 
 import io.uouo.wechatbot.client.WechatBotClient;
 import io.uouo.wechatbot.common.WechatBotCommon;
-import io.uouo.wechatbot.service.domain.WechatMsg;
 import io.uouo.wechatbot.service.WechatBotService;
+import io.uouo.wechatbot.service.domain.WechatMsg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-/**
- * @author: [青衫] 'QSSSYH@QQ.com'
- * @Date: 2021-03-18 20:55
- * @Description: <  >
- */
+
 @Service
 public class WechatBotServiceImpl implements WechatBotService, WechatBotCommon {
 
@@ -25,8 +21,6 @@ public class WechatBotServiceImpl implements WechatBotService, WechatBotCommon {
      *
      * @param wechatMsg 微信消息体
      * @return void
-     * @Author 青衫 [2940500@qq.com]
-     * @Date 2021-3-18
      */
     @Override
     public void wechatCommon(WechatMsg wechatMsg) {
@@ -39,8 +33,6 @@ public class WechatBotServiceImpl implements WechatBotService, WechatBotCommon {
      *
      * @param wechatMsg 微信消息体
      * @return void
-     * @Author 青衫 [2940500@qq.com]
-     * @Date 2021-3-18
      */
     @Override
     public void sendTextMsg(WechatMsg wechatMsg) {
@@ -54,8 +46,6 @@ public class WechatBotServiceImpl implements WechatBotService, WechatBotCommon {
      *
      * @param wechatMsg 微信消息体
      * @return void
-     * @Author 青衫 [2940500@qq.com]
-     * @Date 2021-3-18
      */
     @Override
     public void sendImgMsg(WechatMsg wechatMsg) {
@@ -68,8 +58,6 @@ public class WechatBotServiceImpl implements WechatBotService, WechatBotCommon {
      *
      * @param wechatMsg
      * @return io.uouo.wechatbot.common.util.AjaxResult
-     * @Author 青衫 [2940500@qq.com]
-     * @Date 2021-3-26
      */
     @Override
     public void sendATMsg(WechatMsg wechatMsg) {
@@ -84,8 +72,6 @@ public class WechatBotServiceImpl implements WechatBotService, WechatBotCommon {
      *
      * @param wechatMsg
      * @return io.uouo.wechatbot.common.util.AjaxResult
-     * @Author 青衫 [2940500@qq.com]
-     * @Date 2021-3-26
      */
     @Override
     public void sendAnnex(WechatMsg wechatMsg) {
@@ -99,9 +85,6 @@ public class WechatBotServiceImpl implements WechatBotService, WechatBotCommon {
      *
      * @param
      * @return io.uouo.wechatbot.common.util.AjaxResult
-     * @Author 青衫 [2940500@qq.com]
-     * @Date 2021-3-29
-     * @see WechatBotCommon#USER_LIST 发起后会收到一条type类型是该常量值消息
      */
     @Override
     public void getWeChatUserList() {
@@ -116,8 +99,6 @@ public class WechatBotServiceImpl implements WechatBotService, WechatBotCommon {
      *
      * @param wxid 被获取详细信息的人的 微信id
      * @return void
-     * @Author 青衫 [2940500@qq.com]
-     * @Date 2021-3-29
      */
     @Override
     public void getPersonalDetail(String wxid) {
@@ -126,12 +107,4 @@ public class WechatBotServiceImpl implements WechatBotService, WechatBotCommon {
         wechatBotClient.sendMsgUtil(wechatMsg);
     }
 
-    @Override
-    public void demo() {
-        WechatMsg wechatMsg = new WechatMsg();
-        wechatMsg.setRoomid("44037895190@chatroom");
-        wechatMsg.setType(CHATROOM_MEMBER);
-        wechatMsg.setContent(CONTACT_LIST);
-        wechatBotClient.sendMsgUtil(wechatMsg);
-    }
 }

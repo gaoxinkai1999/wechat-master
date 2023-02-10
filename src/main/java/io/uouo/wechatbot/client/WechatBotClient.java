@@ -2,6 +2,7 @@ package io.uouo.wechatbot.client;
 
 import com.alibaba.fastjson.JSONObject;
 import io.uouo.wechatbot.ChatGPT.Api;
+import io.uouo.wechatbot.ChatGPT.ChatGpt;
 import io.uouo.wechatbot.common.WechatBotCommon;
 import io.uouo.wechatbot.service.domain.WechatMsg;
 import io.uouo.wechatbot.service.impl.WechatBotServiceImpl;
@@ -16,13 +17,12 @@ import java.net.URISyntaxException;
 /**
  * websocket机器人客户端
  *
- * @author: [青衫] 'QSSSYH@QQ.com'
- * @Date: 2021-03-16 18:20
- * @Description: < 描述 >
  */
 public class WechatBotClient extends WebSocketClient implements WechatBotCommon {
     @Autowired
     Api api;
+    @Autowired
+    ChatGpt chatGpt;
     @Autowired
     WechatBotServiceImpl wechat;
 
@@ -31,8 +31,6 @@ public class WechatBotClient extends WebSocketClient implements WechatBotCommon 
      *
      * @param url WebSocket链接地址
      * @return
-     * @Author 青衫 [2940500@qq.com]
-     * @Date 2021-3-26
      */
     public WechatBotClient(String url) throws URISyntaxException {
         super(new URI(url));
@@ -43,8 +41,6 @@ public class WechatBotClient extends WebSocketClient implements WechatBotCommon 
      *
      * @param serverHandshake
      * @return void
-     * @Author 青衫 [2940500@qq.com]
-     * @Date 2021-3-16
      */
     @Override
     public void onOpen(ServerHandshake serverHandshake) {
@@ -56,8 +52,6 @@ public class WechatBotClient extends WebSocketClient implements WechatBotCommon 
      *
      * @param s
      * @return void
-     * @Author 青衫 [2940500@qq.com]
-     * @Date 2021-3-16
      */
     @Override
     public void onMessage(String s) {
@@ -72,19 +66,23 @@ public class WechatBotClient extends WebSocketClient implements WechatBotCommon 
 //            被@的情况
             if (message.getString("content").startsWith("@abc") && message.getString("wxid").endsWith("@chatroom")) {
                 System.out.println(message.getString("content").split("@abc")[1].trim());
-                String string = api.xiaoai(message.getString("content").split("@abc")[1].trim());
-                if (!string.isEmpty()) {
+//                String string = api.xiaoai(message.getString("content").split("@abc")[1].trim());
+                String text=message.getString("content").split("@abc")[1].trim();
+                String result = chatGpt.send(text);
+                if (!result.isEmpty()) {
                     wechatMsg.setRoomid(message.getString("wxid"));
-                    wechatMsg.setContent(string);
+                    wechatMsg.setContent(result);
                     wechatMsg.setNickname("@");
                     wechat.sendATMsg(wechatMsg);
                 }
             //私聊情况
             } else if (!message.getString("wxid").endsWith("@chatroom")) {
-                String string = api.xiaoai(message.getString("content"));
-                if (!string.isEmpty()) {
+//                String string = api.xiaoai(message.getString("content"));
+                String text=message.getString("content");
+                String result = chatGpt.send(text);
+                if (!result.isEmpty()) {
                     wechatMsg.setWxid(message.getString("wxid"));
-                    wechatMsg.setContent(string);
+                    wechatMsg.setContent(result);
                     wechat.sendTextMsg(wechatMsg);
                 }
 
@@ -100,11 +98,6 @@ public class WechatBotClient extends WebSocketClient implements WechatBotCommon 
     /**
      * 描述: 方法在连接断开时调用
      *
-     * @param i
-     * @param s
-     * @param b
-     * @return void
-     * @Author 青衫 [2940500@qq.com]
      * @Date 2021-3-16
      */
     @Override
@@ -117,8 +110,6 @@ public class WechatBotClient extends WebSocketClient implements WechatBotCommon 
      *
      * @param e
      * @return void
-     * @Author 青衫 [2940500@qq.com]
-     * @Date 2021-3-16
      */
     @Override
     public void onError(Exception e) {
@@ -131,8 +122,6 @@ public class WechatBotClient extends WebSocketClient implements WechatBotCommon 
      *
      * @param wechatMsg 消息体
      * @return void
-     * @Author 青衫 [2940500@qq.com]
-     * @Date 2021-3-18
      */
     public void sendMsgUtil(WechatMsg wechatMsg) {
         if (!StringUtils.hasText(wechatMsg.getExt())) {
